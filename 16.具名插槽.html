@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+	<body>
+		<div id="app">	
+			<demopost>
+				<!--注意v-slot只能添加在template标签上-->
+				<template #header><h1>文章标题</h1></template>
+				<h1>文章内容</h1>
+				<template #footer><h1>文章页脚</h1></template><!--#footer相当于v-slot:footer的缩写-->
+			</demopost>
+		</div>
+		<template id="demo-post">
+			<div><!--注意这样写一定要用div等标签将多个slot包裹起来，因为template不在dom树中，
+				不能让slot作为标签-->
+				<slot name="header">标题</slot>
+				<slot>内容</slot>
+				<slot name="footer">页脚</slot>
+			</div>
+		</template>
+		
+		<script src="vue.js"></script>
+		<script>
+			var demopost = {
+				template:'#demo-post'
+			}
+			
+			var app = new Vue({
+				el:'#app',
+				components:{
+					'demopost':demopost
+				}
+			})
+		</script>
+	</body>
+</html>

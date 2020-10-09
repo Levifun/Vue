@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p v-text="content"></p>
+			<p v-html="content"></p><!--v-html会将data里面的标签字符串解析出来-->
+		</div>
+		
+		<script>
+			var app = new Vue({
+  				el: "#app",//#作为css里面的id选择器，选择vue的作用区域
+  				data: {
+    				content:"<a href='http://www.baidu.com'>百度</a>"
+  				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="button" value="v-on函数" v-on:click="doIt" /><!--注意v-on的调用方式-->
+			<input type="button" value="v-on双击" v-on:dblclick="doIt" />
+			<input type="button" value="v-on简写" @click="doIt" /><!--v-on简写-->
+			<p @click="changeInfo">{{food}}</p>
+		</div>
+		
+		<script>
+			var app = new Vue({
+  				el: "#app",
+  				data:{
+  					food:"柿子炒鸡蛋"
+  				},
+  				methods:{
+  					doIt:function(){
+  						alert("Hello World!");
+  					},
+  					changeInfo:function(){//用vue更改页面内容，代替dom操作
+  						//alert(this.food);
+  						this.food+="好好吃";
+  					}
+  				}
+			})
+		</script>
+	</body>
+</html>

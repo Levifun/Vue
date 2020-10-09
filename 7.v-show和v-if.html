@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button @click="changeIsShow">v-show 切换显示</button>
+			<img v-show="isShow" src="image/1.gif" />
+			<!--表达式可以是age>=18这种用来得出bool值的表达式-->
+			<button @click="changeIsShow">v-if 切换显示</button>
+			<img v-if="isShow" src="image/1.gif" />
+			<!--
+				v-if和v-show的用法基本相同，都是根据表达式来判断元素是否显示，v-if
+				直接改变了dom树的结构,v-show只改变元素的display属性，相比之下
+				v-show更加节省资源，使用频繁的元素使用v-show改变元素的可见
+			-->
+		</div>
+		
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					isShow:true
+				},
+				methods:{
+					changeIsShow:function(){
+						this.isShow = !this.isShow;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

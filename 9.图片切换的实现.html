@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<img src="image/prev.png" v-show="index>0"
+				style="float: left;margin-top: 300px;" @click="prev"/>
+			<img :src="srcArr[index]" width="72%" style="position: fixed;left: 14%;"/>
+			<img src="image/next.png" v-show="index<srcArr.length-1" 
+				style="float: right;margin-top: 300px;" @click="next"/>
+			<!--注意v-show的表达式用法-->
+		</div>
+		
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					srcArr:["image/2.jpg","image/3.jpg","image/4.jpg","image/5.jpg"],
+					index:0
+				},
+				methods:{
+					prev:function(){
+						if(this.index>0)
+							this.index--;
+					},
+					next:function(){
+						if(this.index<this.srcArr.length-1)
+							this.index++;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpna></cpna>
+		</div>
+		
+		<template id="cpn">
+			<div>
+				<h1>loveVue</h1>
+				<button @click="getParent">点击</button>
+			</div>
+		</template>
+		
+		<script src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"loveVue"
+				},
+				components:{
+					cpna:{
+						template:"#cpn",
+						methods:{
+							getParent(){
+								console.log(this.$parent.message);
+								//$parent获取的是父组件，当前获取的是Vue实例，当两个组件相互套用时
+								//获取的是VueComponent
+								console.log(this.$root.message);
+								//$root直接获取Vue实例
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

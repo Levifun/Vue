@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<div id="app">
+			<cpna :message="message" ref="a"></cpna>
+			<!--ref相当于给子组件确定id，父组件通过refs获取具体的的组件-->
+			<cpna :message="message" ref="b"></cpna>
+			<cpna :message="message" ref="c"></cpna>
+			<button @click="getRefs">点击</button>
+		</div>
+		
+		<template id="cpn">
+			<div>
+				{{message}}
+			</div>
+		</template>
+		
+		<script src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:"#app",
+				data:{
+					message:"loveVue"
+				},
+				methods:{
+					getRefs(){
+						console.log(this.$refs.a.message);
+						//this.$refs获取的是父组件内所有子组件的数组,this.$refs.a获取的是ref=“a”的子组件
+					}
+				},
+				components:{
+					cpna:{
+						props:{
+							message:String
+						},
+						template:"#cpn"
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

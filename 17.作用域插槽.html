@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<cpn>
+				<template #header="slotData">
+					<span v-for="name in slotData.names">{{name}}--</span>
+				</template>
+			</cpn>
+		</div>
+
+		<template id="cpn">
+			<div>
+				<slot v-bind:names="names" name="header">
+					<ul>
+						<li v-for="name in names">{{name}}</li>
+					</ul>
+				</slot>
+			</div>
+		</template>
+		
+		<script src="vue.js"></script>
+		<script>
+			const app = new Vue({
+				el:'#app',
+				components:{
+					cpn:{
+						template: "#cpn",
+						data(){
+							return {
+								names:['alice','bob','clire']
+							}
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style>
+			.active{
+				border: 1px solid royalblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--v-bind为元素绑定属性-->
+		<div id="app">
+			<img v-bind:src="isSrc" :class="{active:isActive}" @click="changeActive"/>
+			<!--v-bind绑定属性的语法为"v-bind:属性名"或":属性名 "-->
+			<!--v-bind绑定类的写法为"{active:isActive}"或"active?'isActive':''"，作用是判断类是否生效-->
+		</div>
+		
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					isActive:false,
+					isSrc:"image/1.gif"
+				},
+				methods:{
+					changeActive:function(){
+						this.isActive = !this.isActive;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

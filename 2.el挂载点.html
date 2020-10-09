@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<!--注意观察el的作用范围-->
+		{{ message }}
+		<div id="app" class="app">
+			{{ message }}
+			<span>{{ message }}</span>
+            <!--一般建议挂载到div标签上-->
+		</div>
+		<script>
+			var app = new Vue({
+				//el:"#app",
+				el:".app",//el选择器也可以以class作为选择标准，其他也可以，但是一般使用id选择器
+				data:{
+					message:"el挂载点"
+				}
+			})
+		</script>
+	</body>
+</html>
+<!--
+	作者：offline
+	时间：2020-08-30
+	描述：el挂载点的作用范围是指定的元素及其下属标签
+-->

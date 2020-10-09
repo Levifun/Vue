@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul v-for="(item,index) in area"><!--注意item和index的前后顺序-->
+				<li>{{index+1+"."}}{{item}}</li>
+			</ul>
+			<!------------------------------------------------------------->
+			<ul v-for="item in info"><!--使用复杂的数据结构-->
+				<li>{{item}}</li>
+				<li>{{item.name}}</li><!--注意观察调用方式以及调用效果-->
+			</ul>
+			<!------------------------------------------------------------->
+			<input v-model="text"></input>
+			<!--
+				v-model类似于v-text，但不同的是v-model实现的是数据的
+				双向绑定，dom元素的内容改变则被绑定的元素和绑定的内容同时发生
+				改变，通常用来获取用户输入的内容，一般用在input和textarea标签上面
+			-->
+			<p>用户修改后v-model绑定的元素内容: {{text}}</p>
+		</div>
+		
+		<script>
+			var app = new Vue({
+				el:"#app",
+				data:{
+					area:["呼和浩特","赤峰","包头","乌兰察布"],
+					info:[
+						{name:"李伟凡",age:23},
+						{name:"于天泽",age:23}
+					],
+					text:"v-model同步的内容"
+				}
+			})
+		</script>
+	</body>
+</html>

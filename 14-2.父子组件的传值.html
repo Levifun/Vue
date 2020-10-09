@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--子组件向父组件传值用props-->
+		<!--父组件向子组件传值用$emit-->
+		<div id="app">
+			<componenta :title="title" @changetitle="changetitle"></componenta>
+		</div>
+		
+		<template id="cpn">
+			<div><!--千万不能忘记外面要套一层div-->
+				data:{{title}}<br/>
+				<input type="text" :value="title" @input="titleInput" />
+				<!--v-model相当于v-bind:value加v-on:input-->
+			</div>
+		</template>
+		
+		<script src="vue.js"></script>
+		<script>
+			const vm = new Vue({
+				el:"#app",
+				data:{
+					title:"loveVue"
+				},
+				methods:{
+					changetitle(data){
+						this.title = data;
+					}
+				},
+				components:{
+					componenta:{//组件名用小写
+						props:{
+							title:String
+						},
+						data(){//想要在input中双向绑定修改子组件中的数据，需要用函数将props
+							   //中的内容return一份，相当于复制一份
+							return {
+								dtitle:this.title
+							}
+						},
+						methods:{
+							titleInput(event){
+								this.dtitle = event.target.value;
+								this.$emit("changetitle",this.dtitle);//函数名用小写
+							}
+						},
+						template:"#cpn"
+					}
+				}
+			})
+			
+		</script>
+	</body>
+</html>

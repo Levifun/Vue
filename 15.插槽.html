@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<text-post :title="title">loveVue</text-post>
+		</div>
+		<script>
+			Vue.component('text-post',{
+				props:['title'],
+				template:'<a :href="title"><slot>hateVue</slot></a>'
+				//如果<slot>标签内有内容，则父标签在内部没有
+				//给出内容时默认显示<slot>中的内容
+			})
+			
+			//<slot></slot>标签会被替换成父标签内的内容
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					title:"http://www.baidu.com"
+				}
+			})
+		</script>
+	</body>
+</html>
