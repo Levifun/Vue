@@ -2,7 +2,7 @@
     <div>
         <h1 class="header">{{name}}</h1>
         <button @click="getmName">按钮</button>
-        <h2>{{message}}</h2>
+        <h2 class="footer">{{message}}</h2>
         <Cpn></Cpn>
     </div>
 </template>
@@ -32,5 +32,8 @@
 <style scoped>
  .header {
      color: aquamarine;
+ }
+ .footer {
+     color: aliceblue;
  }
 </style>
